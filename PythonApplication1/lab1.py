@@ -52,10 +52,30 @@ class simple_drawing_window2(QWidget):
 
         p.drawPolygon([QPoint(100,100),QPoint(100,200),QPoint(300,200)])
         p.end()
+class simple_drawing_window3(QWidget):
+    def __init__(self):
+        super().__init__(None)
+        self.setWindowTitle("Simple Drawing")
+        self.rabbit = QImage("images/rabbit.png")
+    def paintEvent(self,e):
+        p = QPainter()
+        p.begin(self)
+
+        
+        p.setPen(QColor(25,0,140))
+        p.setBrush(QColor(25,0,140))
+
+        p.drawPolygon([QPoint(50,300),QPoint(100,250),QPoint(50,200),QPoint(100,200),QPoint(150,150),QPoint(200,200)
+                       ,QPoint(250,200),QPoint(200,250),QPoint(250,300),QPoint(150,250)])
+        p.end()
 def main():
     app= QApplication(sys.argv)
-    w = simple_drawing_window2()
-    w.show()
+    w1 = simple_drawing_window1()
+    w1.show()
+    w2 = simple_drawing_window2()
+    w2.show()
+    w3 = simple_drawing_window3()
+    w3.show()
 
     return app.exec_()
 if __name__ == "__main__":
